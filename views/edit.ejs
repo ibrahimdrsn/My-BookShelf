@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Your Review</title>
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            background-image: linear-gradient(to left, #7c64ca, #7a62c5, #7960bf, #775fba, #755db5);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }   
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #2c1d5a;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+
+        input[type="text"],
+        input[type="radio"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label[for^="star"] {
+            font-size: 24px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        input[type="radio"]:checked ~ label[for^="star"] {
+            color: #ffc107; 
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa; 
+            padding: 10px; 
+            text-align: center;
+        }
+        button {
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #b682e7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+            color: #432f85;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-image: linear-gradient(to left, #795fce, #5b479a, #6b4fb8, #7054bc, #755db5);
+            color: white;
+        }
+        @media only screen and (max-width: 576px) {
+            body {
+                font-size: 14px;
+            }
+
+            .form-container {
+                width: calc(100% - 20px);
+            }
+
+        
+
+            @media only screen and (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            }
+
+            @media only screen and (max-width: 992px) {
+            body {
+                font-size: 18px;
+            }
+            }
+
+            @media only screen and (max-width: 1200px) {
+            body {
+                font-size: 20px;
+            }
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Edit Your Review</h1>
+    <div class="form-container">
+        <form action="/edit/<%= book.id %>" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= book.name %>" required><br>
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" rows="4" cols="50"><%= book.review %></textarea><br>
+            <div class="form-group">
+                <label for="rate">Rate:</label>
+                <div class="rating-container">
+                    <input type="radio" id="star10" name="rate" value="10">
+                    <label for="star10">10</label>
+                    <input type="radio" id="star9" name="rate" value="9">
+                    <label for="star9">9</label>
+                    <input type="radio" id="star8" name="rate" value="8">
+                    <label for="star8">8</label>
+                    <input type="radio" id="star7" name="rate" value="7">
+                    <label for="star7">7</label>
+                    <input type="radio" id="star6" name="rate" value="6">
+                    <label for="star6">6</label>
+                    <input type="radio" id="star5" name="rate" value="5">
+                    <label for="star5">5</label>
+                    <input type="radio" id="star4" name="rate" value="4">
+                    <label for="star4">4</label>
+                    <input type="radio" id="star3" name="rate" value="3">
+                    <label for="star3">3</label>
+                    <input type="radio" id="star2" name="rate" value="2">
+                    <label for="star2">2</label>
+                    <input type="radio" id="star1" name="rate" value="1">
+                    <label for="star1">1</label>
+                </div>
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>© ibrahimdrsn. All rights reserved. </p>
+    </div>
+</body>
+</html>

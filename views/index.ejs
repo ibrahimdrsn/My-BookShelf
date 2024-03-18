@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My BookShelf</title>
+    <style>
+        body{
+            background-image: linear-gradient(to left, #7c64ca, #7a62c5, #7960bf, #775fba, #755db5);
+            height: 100vh;
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+            color: #432f85;
+        }
+        button {
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-image: linear-gradient(to left, #795fce, #5b479a, #6b4fb8, #7054bc, #755db5);
+            color: white;
+        }
+       
+        .card{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px;
+
+        }
+        .card-item{
+            background: rgba(226, 218, 218, 0.3);
+            padding: 3em;
+            margin: 10px;
+            width: calc(50% - 20px);
+            border-radius: 20px;
+            border-left: 1px solid rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+        .card-item img {
+            width: 150px;
+            height: auto;
+            float: left;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .card-item h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #2c1d5a;
+        }
+        .card-item p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #ede6e6;
+        }
+        .footer {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f9fa; 
+            padding: 10px;
+            text-align: center;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            margin-top: 40px;
+
+        
+        }
+        #rate-text{
+            color: white;
+        }
+        @media only screen and (max-width: 576px) {
+            body {
+                font-size: 14px;
+            }
+
+            .card-item {
+                width: calc(100% - 20px);
+            }
+
+            .card-item img {
+                width: 100px;
+                margin-right: 10px;
+            }
+            }
+
+            @media only screen and (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            }
+
+            @media only screen and (max-width: 992px) {
+            body {
+                font-size: 18px;
+            }
+            }
+
+            @media only screen and (max-width: 1200px) {
+            body {
+                font-size: 20px;
+            }
+            }
+    </style>
+</head>
+<body>
+
+    <h1>My BookShelf</h1>
+    <form action="/add" method="GET">
+        <button type="submit">Add a new book</button>
+    </form>
+    <div class="card">
+        <% listItems.forEach(function(item) { %>
+            <div class="card-item">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= item.isbn %>-L.jpg" alt="Book image">
+                <h2><%= item.name %></h2>
+                <p><%= item.review %></p>
+                <p> Rate: <span id="rate-text"><%= item.rate %></span></p>
+                <div class="buttons">
+                    <button class="edit-btn" data-id="<%= item.id %>">Edit</button>
+                    <button class="delete-btn" data-id="<%= item.id %>">Delete</button>
+                </div>
+                
+            </div>
+        <% }); %>
+        <div class="footer">
+            <p>© ibrahimdrsn. All rights reserved. </p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+    
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const bookId = button.dataset.id;
+                    try {
+                        const response = await fetch(`/delete/${bookId}`, {
+                            method: 'DELETE'
+                        });
+                        if (response.ok) {
+                            
+                            button.closest('.card-item').remove();
+                        } else {
+                            
+                            console.error('Deletion is successful.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    const editButtons = document.querySelectorAll('.edit-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const bookId = button.dataset.id;
+            try {
+                const response = await fetch(`/delete/${bookId}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    button.closest('.card-item').remove();
+                } else {
+                    console.error('Deletion is successful.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const bookId = button.dataset.id;
+            window.location.href = `/edit/${bookId}`;
+        });
+    });
+});
+    </script>
+</body>
+</html>
