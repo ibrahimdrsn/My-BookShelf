@@ -40,6 +40,6 @@ This project is licensed under the MIT License.
 
 ![Screenshot 2024-03-18 214519](https://github.com/ibrahimdrsn/My-BookShelf/assets/155435456/152d320a-36e3-4427-a475-7acb9008aa71)
 
-![Screenshot 2024-03-18 214440](https://github.com/ibrahimdrsn/My-BookShelf/assets/155435456/0405007c-3264-437a-bde0-095824ae03f3)
+![Screenshot 2024-03-18 220002](https://github.com/ibrahimdrsn/My-BookShelf/assets/155435456/8c7b2509-44d5-4464-9b88-acdf57a10ef4)
 
-![Screenshot 2024-03-18 215437](https://github.com/ibrahimdrsn/My-BookShelf/assets/155435456/4a615bfd-510f-4546-a7de-5921ae071379)
+![Screenshot 2024-03-18 215943](https://github.com/ibrahimdrsn/My-BookShelf/assets/155435456/7471d9bd-0467-4152-8c8b-f0bb91cedf52)
